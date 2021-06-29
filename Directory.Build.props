@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DisableImplicitAssetTargetFallback>true</DisableImplicitAssetTargetFallback>
+    <LangVersion>9.0</LangVersion>
+    <!-- Default for Net6.0
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    -->
+  </PropertyGroup>
+</Project>
