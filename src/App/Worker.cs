@@ -46,20 +46,29 @@ namespace App
             IDbContextTransaction transaction = await _dataContext.BeginTransaction().ConfigureAwait(false);
 
             _dataContext.Persons.Add(dennis);
+            await _dataContext.SaveChangesAsync(stoppingToken).ConfigureAwait(false);
 
             await transaction.CreateSavepointAsync("a", stoppingToken).ConfigureAwait(false);
 
             _dataContext.Persons.Add(tess);
+            await _dataContext.SaveChangesAsync(stoppingToken).ConfigureAwait(false);
 
             await transaction.RollbackToSavepointAsync("a", stoppingToken).ConfigureAwait(false);
 
             _dataContext.Persons.Add(daan);
-
             await _dataContext.SaveChangesAsync(stoppingToken).ConfigureAwait(false);
 
             await _dataContext.CommitTransaction(transaction).ConfigureAwait(false);
 
             _hostApplicationLifetime.StopApplication();
+        }
+    }
+
+    public class Calculator
+    {
+        public int Add(int A, int B)
+        {
+            return A + B;
         }
     }
 }
